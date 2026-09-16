@@ -30,7 +30,7 @@
                 <span>Hassan<span class="logo-highlight">.AI</span></span>
             </a>
 
-            <nav class="navbar" aria-label="Navegação principal">
+            <nav id="primaryNavigation" class="navbar" aria-label="Navegação principal">
                 <ul class="nav-links">
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#cadastro">Cadastro</a></li>
@@ -40,7 +40,20 @@
                 </ul>
             </nav>
 
-            <a class="btn btn-login" href="#cadastro">Entrar</a>
+            <a class="btn btn-login" href="#teste">Começar agora</a>
+
+            <button
+                id="menuToggle"
+                class="menu-toggle"
+                type="button"
+                aria-controls="primaryNavigation"
+                aria-expanded="false"
+                aria-label="Abrir menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
         </div>
     </header>
@@ -76,13 +89,13 @@
                     </p>
 
                     <div class="hero-buttons">
-                        <a class="btn btn-primary btn-large" href="#cadastro">
-                            Começar Agora
+                        <a class="btn btn-primary btn-large" href="#teste">
+                            Começar a praticar
                             <span aria-hidden="true">→</span>
                         </a>
 
                         <a class="btn btn-outline btn-large" href="#teste">
-                            Teste Gratuito
+                            Descobrir meu nível
                         </a>
                     </div>
 
@@ -151,50 +164,62 @@
                 <div class="benefits-grid">
 
                     <article class="feature-card">
-                        <div class="feature-icon blue-icon">💬</div>
+                        <div class="feature-visual feature-visual-conversation" aria-hidden="true">
+                            <span class="feature-icon blue-icon">💬</span>
+                            <span class="feature-visual-label">AI CHAT</span>
+                        </div>
                         <h3>Conversação com IA</h3>
                         <p>
                             Pratique diálogos reais e receba correções
                             imediatas para melhorar sua comunicação.
                         </p>
-                        <a class="feature-link" href="#cadastro">
-                            Saiba mais →
+                        <a class="feature-link" href="#teste">
+                            Praticar agora <span aria-hidden="true">→</span>
                         </a>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon green-icon">👨‍🏫</div>
+                        <div class="feature-visual feature-visual-personalized" aria-hidden="true">
+                            <span class="feature-icon green-icon">👨‍🏫</span>
+                            <span class="feature-visual-label">YOUR LEVEL</span>
+                        </div>
                         <h3>Aulas Personalizadas</h3>
                         <p>
                             Conteúdo adaptado ao seu nível, objetivos
                             e ritmo de aprendizagem.
                         </p>
-                        <a class="feature-link" href="#cadastro">
-                            Saiba mais →
+                        <a class="feature-link" href="#teste">
+                            Descobrir nível <span aria-hidden="true">→</span>
                         </a>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon purple-icon">📈</div>
+                        <div class="feature-visual feature-visual-progress" aria-hidden="true">
+                            <span class="feature-icon purple-icon">📈</span>
+                            <span class="feature-visual-label">KEEP GOING</span>
+                        </div>
                         <h3>Evolução ao Seu Ritmo</h3>
                         <p>
                             Aprenda sem pressão e acompanhe seu progresso
                             durante toda a jornada.
                         </p>
                         <a class="feature-link" href="#como-funciona">
-                            Saiba mais →
+                            Ver o caminho <span aria-hidden="true">→</span>
                         </a>
                     </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon orange-icon">⏰</div>
+                        <div class="feature-visual feature-visual-anywhere" aria-hidden="true">
+                            <span class="feature-icon orange-icon">⏰</span>
+                            <span class="feature-visual-label">ANYWHERE</span>
+                        </div>
                         <h3>Estude em Qualquer Lugar</h3>
                         <p>
                             Acesse sua aprendizagem pelo computador,
                             tablet ou smartphone.
                         </p>
-                        <a class="feature-link" href="#cadastro">
-                            Saiba mais →
+                        <a class="feature-link" href="#teste">
+                            Começar prática <span aria-hidden="true">→</span>
                         </a>
                     </article>
 
@@ -222,7 +247,7 @@
 
                     <article class="step-card">
                         <span class="step-number">01</span>
-                        <div class="step-icon">👤</div>
+                        <div class="step-icon">01</div>
                         <h3>Criar Conta</h3>
                         <p>
                             Faça seu cadastro gratuitamente e crie
@@ -232,7 +257,7 @@
 
                     <article class="step-card">
                         <span class="step-number">02</span>
-                        <div class="step-icon">📝</div>
+                        <div class="step-icon">02</div>
                         <h3>Teste de Nível</h3>
                         <p>
                             Descubra seu nível atual de inglês através
@@ -242,7 +267,7 @@
 
                     <article class="step-card">
                         <span class="step-number">03</span>
-                        <div class="step-icon">🎧</div>
+                        <div class="step-icon">03</div>
                         <h3>Pratique Todos os Dias</h3>
                         <p>
                             Faça exercícios de conversação, vocabulário
@@ -252,7 +277,7 @@
 
                     <article class="step-card">
                         <span class="step-number">04</span>
-                        <div class="step-icon">🏆</div>
+                        <div class="step-icon">04</div>
                         <h3>Acompanhe a Evolução</h3>
                         <p>
                             Veja seu progresso e continue avançando
@@ -269,13 +294,13 @@
         <!-- ==============================
              TESTE DE NÍVEL
         =============================== -->
-        <section class="level-test" id="teste">
+        <section class="level-test" id="teste" aria-labelledby="levelTestTitle">
             <div class="container level-test-container">
 
                 <div class="level-test-content">
                     <span class="light-label">TESTE DE NÍVEL</span>
 
-                    <h2>
+                    <h2 id="levelTestTitle">
                         Descubra o seu nível
                         <span>de inglês agora</span>
                     </h2>
@@ -295,11 +320,13 @@
                         id="startTestButton"
                         class="btn btn-white btn-large"
                         type="button"
+                        aria-controls="testQuestions"
+                        aria-expanded="false"
                     >
                         Fazer Teste Gratuito →
                     </button>
 
-                    <div id="testQuestions" class="test-questions hidden">
+                    <div id="testQuestions" class="test-questions hidden" aria-live="polite">
                         <div class="question-card">
                             <div class="question-label" id="questionNumber">
                                 Question 1 of 10
@@ -309,7 +336,7 @@
                                 <div id="progressFill" class="progress-fill"></div>
                             </div>
                             <label class="sr-only" for="answerInput">Your answer</label>
-                            <input id="answerInput" class="answer-input" type="text" autocomplete="off" placeholder="Type your answer in English">
+                            <input id="answerInput" class="answer-input" type="text" autocomplete="off" placeholder="Type your answer in English" aria-describedby="questionNumber">
                             <button id="submitAnswer" class="primary-button" type="button">Continue</button>
                         </div>
                     </div>
@@ -403,8 +430,8 @@
                                 <span>⏱ 12h</span>
                             </div>
 
-                            <a class="course-link" href="#cadastro">
-                                Ver Curso →
+                            <a class="course-link" href="#teste">
+                                Experimentar prática <span aria-hidden="true">→</span>
                             </a>
                         </div>
                     </article>
@@ -435,8 +462,8 @@
                                 <span>⏱ 15h</span>
                             </div>
 
-                            <a class="course-link" href="#cadastro">
-                                Ver Curso →
+                            <a class="course-link" href="#teste">
+                                Experimentar prática <span aria-hidden="true">→</span>
                             </a>
                         </div>
                     </article>
@@ -466,8 +493,8 @@
                                 <span>⏱ 10h</span>
                             </div>
 
-                            <a class="course-link" href="#cadastro">
-                                Ver Curso →
+                            <a class="course-link" href="#teste">
+                                Experimentar prática <span aria-hidden="true">→</span>
                             </a>
                         </div>
                     </article>
@@ -631,8 +658,8 @@
                 </p>
 
                 <div class="cta-buttons">
-                    <a class="btn btn-white btn-large" href="#cadastro">
-                        Começar Gratuitamente →
+                    <a class="btn btn-white btn-large" href="#teste">
+                        Fazer teste gratuito <span aria-hidden="true">→</span>
                     </a>
 
                     <a class="btn btn-outline btn-large" href="#teste">
@@ -669,11 +696,10 @@
                     Desenvolva sua confiança para se comunicar em inglês.
                 </p>
 
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">#f</a>
-                    <a href="#" aria-label="Instagram">#◎</a>
-                    <a href="#" aria-label="LinkedIn">#in</a>
-                    <a href="#" aria-label="YouTube">#▶</a>
+                <div class="footer-actions">
+                    <a class="footer-action" href="#teste">
+                        Praticar com Hassan.AI <span aria-hidden="true">→</span>
+                    </a>
                 </div>
             </div>
 
@@ -682,7 +708,7 @@
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li><a href="#teste">Começar</a></li>
                     <li><a href="#teste">Teste de Nível</a></li>
                     <li><a href="#como-funciona">Como Funciona</a></li>
                     <li><a href="#dicas">Dicas de Estudo</a></li>
@@ -697,7 +723,7 @@
                     <li><a href="#beneficios">Pronúncia</a></li>
                     <li><a href="#beneficios">Conversação</a></li>
                     <li><a href="#beneficios">Exercícios</a></li>
-                    <li><a href="#cadastro">Certificados</a></li>
+                    <li><a href="#teste">Praticar</a></li>
                 </ul>
             </div>
 
@@ -735,9 +761,8 @@
                 © 2026 Hassan.AI English Learning. Todos os direitos reservados.
             </p>
 
-            <div>
-                <a href="#cadastro">Privacidade</a>
-                <a href="#cadastro">Termos de Uso</a>
+                <div>
+                <a href="mailto:contato@hassanai.com">Falar connosco</a>
             </div>
         </div>
 

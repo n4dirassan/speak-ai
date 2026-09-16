@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
-require("dotenv").config();
+require("dotenv").config({
+    path: path.join(__dirname, ".env")
+});
 
 const app = express();
 const PORT = 3000;
@@ -176,6 +178,65 @@ Score must be between 0 and 100.
             error:
                 error.message ||
                 "Level test error."
+        });
+    }
+});
+
+/* =========================
+   TRANSLATION
+========================= */
+
+app.post("/api/translate", async (req, res) => {
+    try {
+        const text =
+            String(req.body.text || "").trim();
+
+        if (!text) {
+            return res.status(400).json({
+                success: false,
+                error: "Text is empty."
+            });
+        }
+
+        if (text.length > 5000) {
+            return res.status(413).json({
+                success: false,
+                error: "Text is too long."
+            });
+        }
+
+        const reply = await askGroq([
+            {
+                role: "system",
+                content: `
+You are an English-to-Portuguese translator.
+
+Translate the text into natural, clear and simple Portuguese.
+Return ONLY the Portuguese translation.
+Do not add explanations, quotation marks or labels.
+`
+            },
+            {
+                role: "user",
+                content: text
+            }
+        ]);
+
+        res.json({
+            success: true,
+            translation: reply
+        });
+    } catch (error) {
+        console.error(
+            "Translation error:",
+            error
+        );
+
+        res.status(500).json({
+            success: false,
+            error:
+                error.message ||
+                "Translation error."
         });
     }
 });

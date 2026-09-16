@@ -8,13 +8,14 @@
 ========================================================= */
 
 const startTestButton = document.getElementById("startTestButton");
-const levelTest = document.getElementById("levelTest");
 const testQuestions = document.getElementById("testQuestions");
 const questionText = document.getElementById("questionText");
 const questionNumber = document.getElementById("questionNumber");
 const progressFill = document.getElementById("progressFill");
 const answerInput = document.getElementById("answerInput");
 const submitAnswer = document.getElementById("submitAnswer");
+const menuToggle = document.getElementById("menuToggle");
+const primaryNavigation = document.getElementById("primaryNavigation");
 
 
 /* =========================================================
@@ -50,15 +51,58 @@ let voices = [];
 
 
 /* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+function setMenuOpen(isOpen) {
+
+    if (!menuToggle || !primaryNavigation) return;
+
+    primaryNavigation.classList.toggle("is-open", isOpen);
+    menuToggle.classList.toggle("is-open", isOpen);
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Fechar menu" : "Abrir menu"
+    );
+}
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen =
+            menuToggle.getAttribute("aria-expanded") === "true";
+
+        setMenuOpen(!isOpen);
+    });
+}
+
+if (primaryNavigation) {
+    primaryNavigation.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            setMenuOpen(false);
+        });
+    });
+}
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        setMenuOpen(false);
+    }
+});
+
+
+/* =========================================================
    START TEST
 ========================================================= */
 
 if (startTestButton) {
     startTestButton.addEventListener("click", () => {
 
-        if (levelTest) {
-            levelTest.classList.add("hidden");
-        }
+        startTestButton.hidden = true;
+        startTestButton.setAttribute("aria-expanded", "true");
 
         if (testQuestions) {
             testQuestions.classList.remove("hidden");
@@ -171,6 +215,7 @@ async function finishTest() {
             </p>
         </div>
     `;
+    testQuestions.setAttribute("aria-busy", "true");
 
     try {
 
@@ -239,6 +284,8 @@ async function finishTest() {
                 () => location.reload()
             );
         }
+    } finally {
+        testQuestions.setAttribute("aria-busy", "false");
     }
 }
 
@@ -445,11 +492,14 @@ function openChat() {
             <div
                 id="chat"
                 class="chat-messages"
+                aria-live="polite"
+                aria-label="Mensagens da conversa"
             ></div>
 
             <div
                 id="chatStatus"
                 class="chat-status"
+                aria-live="polite"
             >
                 Ready to practice
             </div>
@@ -461,6 +511,8 @@ function openChat() {
                     class="mic-button"
                     type="button"
                     title="Speak"
+                    aria-label="Falar usando o microfone"
+                    aria-pressed="false"
                 >
                     🎤
                 </button>
@@ -469,6 +521,7 @@ function openChat() {
                     id="chatInput"
                     type="text"
                     placeholder="Type or speak in English..."
+                    aria-label="Mensagem para Hassan.AI"
                     autocomplete="off"
                 >
 
@@ -477,6 +530,7 @@ function openChat() {
                     class="send-button"
                     type="button"
                     title="Send"
+                    aria-label="Enviar mensagem"
                 >
                     ➤
                 </button>
@@ -578,8 +632,9 @@ function addAIMessage(message) {
     bubble.className =
         "ai-bubble";
 
-    bubble.innerHTML =
-        formatMessage(message);
+    bubble.appendChild(
+        formatMessage(message)
+    );
 
     row.appendChild(avatar);
     row.appendChild(bubble);
@@ -641,6 +696,9 @@ async function sendChatMessage() {
     const status =
         document.getElementById("chatStatus");
 
+    const sendButton =
+        document.getElementById("chatSend");
+
     if (!input || !chat) return;
 
     const message =
@@ -660,6 +718,11 @@ async function sendChatMessage() {
     if (status) {
         status.textContent =
             "Hassan.AI is thinking...";
+        status.setAttribute("aria-busy", "true");
+    }
+
+    if (sendButton) {
+        sendButton.disabled = true;
     }
 
     const thinking =
@@ -749,6 +812,7 @@ async function sendChatMessage() {
         if (status) {
             status.textContent =
                 "Ready to practice";
+            status.setAttribute("aria-busy", "false");
         }
 
         speakAI(reply);
@@ -771,6 +835,15 @@ async function sendChatMessage() {
         if (status) {
             status.textContent =
                 "Connection error";
+            status.setAttribute("aria-busy", "false");
+        }
+    } finally {
+        if (sendButton) {
+            sendButton.disabled = false;
+        }
+
+        if (status) {
+            status.setAttribute("aria-busy", "false");
         }
     }
 
@@ -933,6 +1006,11 @@ function updateMicButton() {
         button.title =
             "Speak";
     }
+
+    button.setAttribute(
+        "aria-pressed",
+        String(isListening)
+    );
 }
 
 
@@ -1335,6 +1413,10 @@ function showTranslation(
     popup.className =
         "translation-popup";
 
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-live", "polite");
+    popup.setAttribute("aria-label", "Tradução");
+
     popup.innerHTML = `
 
         <div class="translation-original">
@@ -1477,6 +1559,9 @@ function createClickableWord(text) {
     word.title =
         "Click to translate";
 
+    word.setAttribute("role", "button");
+    word.setAttribute("tabindex", "0");
+
     word.addEventListener(
         "click",
         event => {
@@ -1490,6 +1575,13 @@ function createClickableWord(text) {
             );
         }
     );
+
+    word.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            translateText(text, word);
+        }
+    });
 
     return word;
 }
@@ -1545,7 +1637,7 @@ function formatMessage(message) {
         }
     );
 
-    return container.innerHTML;
+    return container;
 }
 
 
