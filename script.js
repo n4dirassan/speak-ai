@@ -331,6 +331,17 @@ function showLevelResult(result) {
         levelMeanings[level] ||
         "O seu nível indica o ponto de partida para definir uma prática de inglês mais adequada.";
 
+    const levelLabels = {
+        A1: "Iniciante",
+        A2: "Básico",
+        B1: "Intermediário",
+        B2: "Intermediário superior"
+    };
+
+    const levelLabel =
+        levelLabels[level] ||
+        "Nível de inglês";
+
     const strengthsText =
         strengths.length
             ? strengths.map(item => `- ${item}`).join("\n")
@@ -344,6 +355,7 @@ function showLevelResult(result) {
     const resultText = [
         "Resultado do teste de nível Hassan.AI",
         `Nível identificado: ${level}`,
+        levelLabel,
         `Pontuação: ${score}%`,
         `O que este nível significa: ${levelMeaning}`,
         "",
@@ -360,9 +372,17 @@ function showLevelResult(result) {
 
     testQuestions.innerHTML = `
 
-        <div class="question-card">
+        <div class="question-card result-card">
 
             <div class="result-icon">🎓</div>
+
+            <div class="result-brand">
+                HASSAN.AI
+            </div>
+
+            <h3 class="result-title">
+                Resultado do teste
+            </h3>
 
             <div class="question-label">
                 O SEU NÍVEL
@@ -371,6 +391,10 @@ function showLevelResult(result) {
             <h2>
                 ${escapeHTML(level)}
             </h2>
+
+            <div class="result-level-name">
+                ${escapeHTML(levelLabel)}
+            </div>
 
             <div id="levelResult">
                 ${escapeHTML(score)}%
@@ -440,26 +464,8 @@ function showLevelResult(result) {
                 ></span>
             </div>
 
-            <button
-                id="startLearning"
-                class="primary-button"
-                type="button"
-            >
-                Start practicing
-            </button>
-
         </div>
     `;
-
-    const startLearningButton =
-        document.getElementById("startLearning");
-
-    if (startLearningButton) {
-        startLearningButton.addEventListener(
-            "click",
-            startLearning
-        );
-    }
 
     const copyResultButton =
         document.getElementById("copyResult");
@@ -529,60 +535,6 @@ async function copyResultToClipboard(text, button, status) {
                 button.disabled = false;
             }, 1800);
         }
-    }
-}
-
-
-/* =========================================================
-   START LEARNING
-========================================================= */
-
-function startLearning() {
-
-    if (!testQuestions) return;
-
-    testQuestions.innerHTML = `
-
-        <div class="question-card">
-
-            <div class="result-icon">🤖</div>
-
-            <div class="question-label">
-                HASSAN.AI
-            </div>
-
-            <h2>
-                Ready to practice?
-            </h2>
-
-            <p class="question-subtitle">
-                Your level is
-                <strong>${escapeHTML(userLevel)}</strong>.
-                <br><br>
-                Practice in English and receive
-                simple corrections and explanations
-                in Portuguese.
-            </p>
-
-            <button
-                id="startConversation"
-                class="primary-button"
-                type="button"
-            >
-                Start practicing
-            </button>
-
-        </div>
-    `;
-
-    const startConversationButton =
-        document.getElementById("startConversation");
-
-    if (startConversationButton) {
-        startConversationButton.addEventListener(
-            "click",
-            openChat
-        );
     }
 }
 
