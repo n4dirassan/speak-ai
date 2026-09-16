@@ -936,9 +936,114 @@ select {
 }
 
 .quote {
-    color: var(--light-blue);
+    color: #ffd21f;
     font-size: 3rem;
     line-height: 0.8;
+}
+
+.testimonials {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--white);
+    background:
+        linear-gradient(110deg, rgba(8, 43, 82, 0.96), rgba(8, 120, 242, 0.72)),
+        url("hero.jpg") center / cover no-repeat;
+}
+
+.testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(8, 43, 82, 0.88), rgba(8, 43, 82, 0.32));
+}
+
+.testimonials-heading h2,
+.testimonials-heading p {
+    color: var(--white);
+}
+
+.testimonials-heading h2 span {
+    color: #ffd21f;
+}
+
+.testimonials-heading .section-label {
+    color: #ffd21f;
+    background: rgba(255, 210, 31, 0.14);
+    border-color: rgba(255, 210, 31, 0.38);
+}
+
+.testimonials .testimonial-card {
+    color: var(--white);
+    background: rgba(8, 43, 82, 0.46);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 18px 40px rgba(4, 24, 46, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.testimonials .testimonial-card:hover {
+    border-color: rgba(255, 210, 31, 0.7);
+    box-shadow: 0 22px 48px rgba(4, 24, 46, 0.3);
+}
+
+.testimonials .testimonial-card p,
+.testimonials .student-profile span {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.testimonials .student-avatar {
+    color: var(--dark-blue);
+    background: #ffd21f;
+}
+
+.testimonials .stars {
+    color: #ffd21f;
+}
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+    padding: 92px 0;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+}
+
+.cta-container {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    text-align: center;
+}
+
+.cta-container h2 {
+    margin-bottom: 18px;
+    color: var(--white);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+}
+
+.cta-container h2 span {
+    display: block;
+    color: #ffd21f;
+}
+
+.cta-container p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+    .cta-section {
+        padding: 70px 0;
+    }
+
+    .cta-container p {
+        font-size: 0.96rem;
+    }
 }
 
 .testimonial-card .stars {
