@@ -1,1303 +1,749 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hassan.AI — English Teacher</title>
 
+    <meta
+        name="description"
+        content="Hassan.AI — Aprenda Inglês de forma fácil, rápida e prática."
+    >
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --blue: #0878ff;
-            --blue-light: #2c8cff;
-            --dark: #07111f;
-            --black: #020711;
-            --text: #101828;
-            --muted: #667085;
-            --white: #ffffff;
-            --border: #e6eaf0;
-        }
-
-        body {
-            min-height: 100vh;
-            font-family: "Inter", sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(
-                    circle at 10% 15%,
-                    rgba(8, 120, 255, .12),
-                    transparent 28%
-                ),
-                radial-gradient(
-                    circle at 90% 80%,
-                    rgba(8, 120, 255, .12),
-                    transparent 30%
-                ),
-                #f7f9fc;
-
-            padding: 18px;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        .app {
-            width: 100%;
-            max-width: 1250px;
-            min-height: calc(100vh - 36px);
-            margin: auto;
-
-            background: var(--white);
-
-            border: 1px solid #e8ecf2;
-            border-radius: 30px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 30px 90px rgba(4, 18, 40, .12);
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .header {
-            height: 78px;
-
-            padding: 0 34px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            border-bottom: 1px solid #edf0f4;
-
-            background: rgba(255,255,255,.96);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
-
-        .logo {
-            width: 46px;
-            height: 46px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 15px;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #006cff,
-                    #1593ff
-                );
-
-            font-size: 23px;
-            font-weight: 900;
-
-            box-shadow:
-                0 10px 25px rgba(8,120,255,.25);
-        }
-
-        .brand-name {
-            color: var(--dark);
-
-            font-size: 19px;
-            font-weight: 900;
-            letter-spacing: -.7px;
-        }
-
-        .brand-name span {
-            color: var(--blue);
-        }
-
-        .brand-subtitle {
-            margin-top: 3px;
-
-            color: #8a94a6;
-
-            font-size: 9px;
-            font-weight: 500;
-        }
-
-        /* =========================
-           SCREENS
-        ========================= */
-
-        .screen {
-            min-height: calc(100vh - 114px);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        #levelTest {
-            position: relative;
-
-            display: flex;
-            align-items: center;
-
-            padding: 55px 55px;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff 0%,
-                    #f7faff 55%,
-                    #edf6ff 100%
-                );
-        }
-
-        #levelTest::before {
-            content: "";
-
-            position: absolute;
-
-            width: 430px;
-            height: 430px;
-
-            right: -160px;
-            bottom: -180px;
-
-            border-radius: 50%;
-
-            background: rgba(8,120,255,.10);
-        }
-
-        #levelTest::after {
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            left: -90px;
-            top: 70px;
-
-            border-radius: 50%;
-
-            background: rgba(8,120,255,.06);
-        }
-
-        .hero {
-            position: relative;
-            z-index: 2;
-
-            width: 100%;
-
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-
-            align-items: center;
-
-            gap: 40px;
-        }
-
-        .hero-content {
-            max-width: 610px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 8px 13px;
-
-            margin-bottom: 20px;
-
-            border-radius: 50px;
-
-            color: #075fc9;
-            background: #e8f3ff;
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: .3px;
-        }
-
-        .hero-badge-dot {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: var(--blue);
-        }
-
-        .hero h1 {
-            max-width: 600px;
-
-            color: #07111f;
-
-            font-size: clamp(43px, 5.3vw, 72px);
-            line-height: .98;
-
-            letter-spacing: -4px;
-
-            font-weight: 900;
-        }
-
-        .hero h1 .blue {
-            color: var(--blue);
-        }
-
-        .hero-text {
-            max-width: 530px;
-
-            margin: 24px 0 28px;
-
-            color: #667085;
-
-            font-size: 15px;
-            line-height: 1.75;
-        }
-
-        .hero-text strong {
-            color: #182230;
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            margin-bottom: 35px;
-        }
-
-        .primary-button {
-            border: none;
-
-            padding: 16px 24px;
-
-            border-radius: 14px;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #006cff,
-                    #168eff
-                );
-
-            font-size: 13px;
-            font-weight: 800;
-
-            box-shadow:
-                0 13px 30px rgba(8,120,255,.25);
-
-            transition: .2s;
-        }
-
-        .primary-button:hover {
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 18px 35px rgba(8,120,255,.32);
-        }
-
-        .hero-note {
-            color: #8a94a6;
-            font-size: 10px;
-        }
-
-        /* =========================
-           FEATURES
-        ========================= */
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-
-            gap: 11px;
-
-            max-width: 530px;
-        }
-
-        .feature {
-            min-height: 82px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-
-            padding: 13px;
-
-            background: rgba(255,255,255,.8);
-
-            border: 1px solid #e4eaf2;
-            border-radius: 17px;
-
-            transition: .2s;
-        }
-
-        .feature:hover {
-            transform: translateY(-2px);
-
-            border-color: #cfe3ff;
-
-            box-shadow:
-                0 12px 28px rgba(8,50,100,.07);
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 12px;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0878ff,
-                    #2b93ff
-                );
-
-            font-size: 18px;
-        }
-
-        .feature-title {
-            margin-bottom: 4px;
-
-            color: #101828;
-
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        .feature p {
-            color: #8a94a6;
-
-            font-size: 9px;
-            line-height: 1.5;
-        }
-
-        /* =========================
-           PHONE
-        ========================= */
-
-        .hero-phone-area {
-            min-height: 520px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-        }
-
-        .phone-glow {
-            position: absolute;
-
-            width: 390px;
-            height: 390px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(8,120,255,.22),
-                    rgba(8,120,255,.03) 65%,
-                    transparent 70%
-                );
-        }
-
-        .phone {
-            position: relative;
-            z-index: 2;
-
-            width: 285px;
-            height: 545px;
-
-            padding: 9px;
-
-            border-radius: 43px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #172235,
-                    #02060d
-                );
-
-            box-shadow:
-                0 35px 70px rgba(3,17,35,.30),
-                0 0 0 2px #354052;
-
-            transform:
-                rotate(4deg);
-        }
-
-        .phone::before {
-            content: "";
-
-            position: absolute;
-
-            width: 85px;
-            height: 25px;
-
-            left: 50%;
-            top: 12px;
-
-            transform: translateX(-50%);
-
-            border-radius: 20px;
-
-            background: #01040a;
-
-            z-index: 5;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-
-            overflow: hidden;
-
-            border-radius: 35px;
-
-            background:
-                linear-gradient(
-                    160deg,
-                    #071a32,
-                    #03101f 65%,
-                    #020914
-                );
-
-            color: white;
-
-            padding: 60px 22px 25px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .phone-logo {
-            width: 62px;
-            height: 62px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 20px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0878ff,
-                    #1d9bff
-                );
-
-            font-size: 31px;
-
-            box-shadow:
-                0 12px 35px rgba(8,120,255,.35);
-        }
-
-        .phone-title {
-            font-size: 29px;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-        }
-
-        .phone-title span {
-            color: #1e91ff;
-        }
-
-        .phone-subtitle {
-            margin-top: 5px;
-
-            color: #2d9aff;
-
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .phone-divider {
-            width: 45px;
-            height: 3px;
-
-            margin: 26px 0;
-
-            border-radius: 5px;
-
-            background: #168cff;
-        }
-
-        .phone-slogan {
-            text-align: center;
-
-            font-size: 17px;
-            font-weight: 700;
-
-            line-height: 1.4;
-        }
-
-        .phone-small {
-            margin-top: 10px;
-
-            color: #91a1b7;
-
-            text-align: center;
-
-            font-size: 9px;
-            line-height: 1.6;
-        }
-
-        .phone-mic {
-            width: 82px;
-            height: 82px;
-
-            margin-top: auto;
-            margin-bottom: 12px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid rgba(50,150,255,.4);
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #138cff,
-                    #075cc8
-                );
-
-            font-size: 32px;
-
-            box-shadow:
-                0 0 45px rgba(8,120,255,.35);
-        }
-
-        .phone-wave {
-            color: #1d8dff;
-
-            font-size: 23px;
-            letter-spacing: 4px;
-        }
-
-        /* =========================
-           TEST
-        ========================= */
-
-        #testQuestions {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 35px 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8fbff,
-                    #ffffff
-                );
-        }
-
-        .test-container {
-            width: 100%;
-            max-width: 700px;
-        }
-
-        .progress-top {
-            display: flex;
-            justify-content: space-between;
-
-            margin-bottom: 10px;
-
-            color: #7b8798;
-
-            font-size: 11px;
-        }
-
-        .progress-bar {
-            height: 6px;
-
-            margin-bottom: 24px;
-
-            overflow: hidden;
-
-            border-radius: 20px;
-
-            background: #e5eaf0;
-        }
-
-        .progress-fill {
-            width: 10%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #006cff,
-                    #2a98ff
-                );
-
-            transition: .3s;
-        }
-
-        .question-card {
-            padding: 40px;
-
-            background: white;
-
-            border: 1px solid #e4e9f0;
-
-            border-radius: 27px;
-
-            text-align: center;
-
-            box-shadow:
-                0 25px 60px rgba(4,18,40,.08);
-        }
-
-        .question-label {
-            margin-bottom: 14px;
-
-            color: var(--blue);
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 1.3px;
-            text-transform: uppercase;
-        }
-
-        .question-card h2 {
-            color: #101828;
-
-            font-size: 27px;
-            line-height: 1.4;
-        }
-
-        .question-subtitle {
-            margin: 10px 0 25px;
-
-            color: #8a94a6;
-
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .answer-area {
-            display: flex;
-            gap: 9px;
-        }
-
-        #answerInput {
-            flex: 1;
-            min-width: 0;
-
-            padding: 14px 16px;
-
-            border: 1px solid #dce2ea;
-
-            border-radius: 15px;
-
-            outline: none;
-
-            background: #fafbfd;
-
-            font-size: 13px;
-        }
-
-        #answerInput:focus {
-            border-color: var(--blue);
-
-            background: white;
-
-            box-shadow:
-                0 0 0 4px rgba(8,120,255,.08);
-        }
-
-        #submitAnswer {
-            border: none;
-
-            padding: 0 22px;
-
-            border-radius: 15px;
-
-            color: white;
-
-            background: var(--blue);
-
-            font-weight: 700;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            #levelTest {
-                padding: 45px 30px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content {
-                max-width: 700px;
-            }
-
-            .hero-phone-area {
-                min-height: 470px;
-            }
-
-            .phone {
-                width: 245px;
-                height: 470px;
-            }
-
-            .phone-title {
-                font-size: 25px;
-            }
-
-            .phone-slogan {
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            body {
-                padding: 0;
-            }
-
-            .app {
-                min-height: 100vh;
-
-                border-radius: 0;
-
-                border: none;
-            }
-
-            .header {
-                height: 68px;
-
-                padding: 0 17px;
-            }
-
-            .logo {
-                width: 40px;
-                height: 40px;
-            }
-
-            .brand-name {
-                font-size: 17px;
-            }
-
-            .brand-subtitle {
-                font-size: 8px;
-            }
-
-            #levelTest {
-                min-height: calc(100vh - 68px);
-
-                padding: 35px 18px 45px;
-            }
-
-            .hero {
-                gap: 20px;
-            }
-
-            .hero-badge {
-                margin-bottom: 16px;
-            }
-
-            .hero h1 {
-                font-size: 43px;
-
-                letter-spacing: -2.5px;
-            }
-
-            .hero-text {
-                margin: 18px 0 23px;
-
-                font-size: 13px;
-            }
-
-            .hero-actions {
-                margin-bottom: 27px;
-            }
-
-            .primary-button {
-                width: 100%;
-
-                padding: 16px;
-            }
-
-            .hero-note {
-                display: none;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-
-                gap: 8px;
-            }
-
-            .feature {
-                min-height: 68px;
-            }
-
-            .hero-phone-area {
-                min-height: 430px;
-            }
-
-            .phone-glow {
-                width: 330px;
-                height: 330px;
-            }
-
-            .phone {
-                width: 225px;
-                height: 425px;
-
-                border-radius: 35px;
-            }
-
-            .phone-screen {
-                border-radius: 28px;
-
-                padding: 48px 17px 20px;
-            }
-
-            .phone-logo {
-                width: 52px;
-                height: 52px;
-
-                font-size: 25px;
-            }
-
-            .phone-title {
-                font-size: 23px;
-            }
-
-            .phone-subtitle {
-                font-size: 9px;
-            }
-
-            .phone-divider {
-                margin: 19px 0;
-            }
-
-            .phone-slogan {
-                font-size: 14px;
-            }
-
-            .phone-mic {
-                width: 64px;
-                height: 64px;
-
-                font-size: 25px;
-            }
-
-            #testQuestions {
-                padding: 16px;
-            }
-
-            .question-card {
-                padding: 28px 18px;
-            }
-
-            .answer-area {
-                flex-direction: column;
-            }
-
-            #submitAnswer {
-                padding: 14px;
-            }
-        }
-
-    </style>
-
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="app">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <!-- HEADER -->
+<header class="header">
 
-    <header class="header">
+    <div class="container nav-container">
 
-        <div class="brand">
+        <a href="#inicio" class="brand">
 
-            <div class="logo">
-                🎓
+            <div class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
             </div>
 
             <div>
-
                 <div class="brand-name">
                     Hassan<span>.AI</span>
                 </div>
 
                 <div class="brand-subtitle">
-                    Your personal English teacher
+                    English Teacher
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="navigation">
+
+            <a href="#inicio">Início</a>
+
+            <a href="#cadastro">Cadastro</a>
+
+            <a href="#teste">Teste de Nível</a>
+
+            <a href="#como-funciona">Como Funciona</a>
+
+            <a href="#dicas">Dicas de Estudo</a>
+
+            <a
+                href="https://wa.me/258000000000"
+                target="_blank"
+                class="contact-button"
+            >
+                <i class="fa-brands fa-whatsapp"></i>
+                Contacto
+            </a>
+
+        </nav>
+
+        <button class="mobile-menu" id="mobileMenu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<section id="inicio" class="hero">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                <i class="fa-solid fa-sparkles"></i>
+                Hassan Tutor
+            </div>
+
+            <h1>
+                Aprenda Inglês
+                <span>de forma fácil e rápida!</span>
+            </h1>
+
+            <p class="hero-text">
+                O Hassan.AI é uma plataforma criada para te orientar
+                e ajudar a aprender inglês de forma prática, natural
+                e no teu ritmo.
+            </p>
+
+            <p class="hero-text secondary">
+                Com o apoio do Hassan Tutor, vais desenvolver as tuas
+                habilidades, ganhar confiança e aprender a comunicar
+                melhor em inglês.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#teste" class="primary-button">
+                    Fazer Teste de Nível
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#como-funciona" class="secondary-button">
+                    Como Funciona
+                </a>
+
+            </div>
+
+            <div class="hero-features">
+
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+
+                    <div>
+                        <strong>Conversação</strong>
+                        <span>com IA</span>
+                    </div>
+                </div>
+
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+
+                    <div>
+                        <strong>Aulas</strong>
+                        <span>personalizadas</span>
+                    </div>
+                </div>
+
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <strong>Evolução</strong>
+                        <span>no teu ritmo</span>
+                    </div>
+                </div>
+
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <strong>Aprende onde</strong>
+                        <span>e quando quiser</span>
+                    </div>
                 </div>
 
             </div>
 
         </div>
 
-    </header>
+
+        <div class="hero-image-wrapper">
+
+            <div class="image-decoration"></div>
+
+            <img
+                src="hero.jpg"
+                alt="Estudante africano estudando inglês com telefone, caderno e caneta"
+                class="hero-image"
+            >
+
+            <div class="hero-note">
+                <strong>Hassan Tutor</strong>
+                <span>Aprender inglês<br>é construir um<br><b>novo futuro!</b></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- HERO / LEVEL TEST INTRO -->
+<!-- =====================================================
+     CADASTRO
+===================================================== -->
 
-    <section
-        id="levelTest"
-        class="screen"
-    >
+<section id="cadastro" class="section cadastro-section">
 
-        <div class="hero">
+    <div class="container">
 
-            <div class="hero-content">
+        <div class="section-heading">
 
-                <div class="hero-badge">
+            <div class="section-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
 
-                    <span class="hero-badge-dot"></span>
+            <h2>Começa a tua jornada</h2>
 
-                    AI-POWERED ENGLISH LEARNING
+            <p>
+                Cria o teu perfil e prepara-te para começar
+                a aprender inglês de forma prática.
+            </p>
 
-                </div>
+        </div>
 
+        <div class="registration-card">
 
-                <h1>
+            <div class="registration-icon">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
 
-                    Improve your
+            <div class="registration-content">
 
-                    <span class="blue">
-                        English
-                    </span>
+                <h3>Cadastro</h3>
 
-                    by speaking with AI.
-
-                </h1>
-
-
-                <p class="hero-text">
-
-                    <strong>
-                        Melhore o seu inglês praticando conversação com Inteligência Artificial.
-                    </strong>
-
-                    <br><br>
-
-                    Faça o teste de nível, descubra onde está e pratique de forma personalizada com o Hassan.AI.
-
+                <p>
+                    O primeiro passo é preparar o teu perfil
+                    para receber uma experiência de aprendizagem
+                    adequada ao teu nível.
                 </p>
 
-
-                <div class="hero-actions">
-
-                    <button
-                        id="startTestButton"
-                        class="primary-button"
-                    >
-                        Start Level Test →
-                    </button>
-
-                    <span class="hero-note">
-                        A1 → A2 → B1 → B2
-                    </span>
-
-                </div>
-
-
-                <div class="features">
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            🎯
-                        </div>
-
-                        <div>
-
-                            <div class="feature-title">
-                                Find your level
-                            </div>
-
-                            <p>
-                                Discover your English level from A1 to B2.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            🎙️
-                        </div>
-
-                        <div>
-
-                            <div class="feature-title">
-                                Practice speaking
-                            </div>
-
-                            <p>
-                                Practice English through real conversation.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            📈
-                        </div>
-
-                        <div>
-
-                            <div class="feature-title">
-                                Track your progress
-                            </div>
-
-                            <p>
-                                Follow your improvement over time.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            🇵🇹
-                        </div>
-
-                        <div>
-
-                            <div class="feature-title">
-                                Portuguese support
-                            </div>
-
-                            <p>
-                                Get simple explanations in Portuguese.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
-
-            <!-- PHONE -->
-
-            <div class="hero-phone-area">
-
-                <div class="phone-glow"></div>
-
-
-                <div class="phone">
-
-                    <div class="phone-screen">
-
-                        <div class="phone-logo">
-                            🎓
-                        </div>
-
-                        <div class="phone-title">
-                            Hassan<span>.AI</span>
-                        </div>
-
-                        <div class="phone-subtitle">
-                            ENGLISH TEACHER
-                        </div>
-
-
-                        <div class="phone-divider"></div>
-
-
-                        <div class="phone-slogan">
-                            Speak.
-                            <br>
-                            Learn.
-                            <br>
-                            Grow.
-                        </div>
-
-                        <div class="phone-small">
-                            Fale. Aprenda. Evolua.
-                        </div>
-
-
-                        <div class="phone-mic">
-                            🎙️
-                        </div>
-
-                        <div class="phone-wave">
-                            〰〰〰
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <a href="#teste" class="small-button">
+                Continuar
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- LEVEL TEST QUESTIONS -->
+<!-- =====================================================
+     TESTE DE NÍVEL
+===================================================== -->
 
-    <section
-        id="testQuestions"
-        class="screen hidden"
-    >
+<section id="teste" class="section level-section">
 
-        <div class="test-container">
+    <div class="container">
 
-            <div class="progress-top">
+        <div class="section-heading">
 
-                <span id="questionNumber">
-                    Question 1 of 10
+            <div class="section-icon">
+                <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+
+            <h2>Teste de Nível</h2>
+
+            <p>
+                Descobre o teu nível de inglês e recebe uma
+                orientação adequada para começar.
+            </p>
+
+        </div>
+
+        <div class="level-card">
+
+            <div class="level-card-icon">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+
+            <div class="level-card-content">
+
+                <span class="eyebrow">
+                    A1 • A2 • B1 • B2
                 </span>
 
-                <span>
-                    Level Test
-                </span>
+                <h3>
+                    Descobre o teu nível de inglês
+                </h3>
+
+                <p>
+                    O teste avalia o teu conhecimento de inglês
+                    e ajuda a definir a melhor forma de começar
+                    a tua prática.
+                </p>
 
             </div>
 
+            <button
+                type="button"
+                class="primary-button"
+                id="startLevelTest"
+            >
+                Começar Teste
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-            <div class="progress-bar">
+        </div>
 
-                <div
-                    id="progressFill"
-                    class="progress-fill"
-                ></div>
+        <div id="levelTestArea" class="test-area hidden">
 
+            <div class="test-progress">
+                <div class="progress-top">
+                    <span id="questionCounter">
+                        Pergunta 1
+                    </span>
+
+                    <span id="progressPercent">
+                        0%
+                    </span>
+                </div>
+
+                <div class="progress-bar">
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+                </div>
             </div>
-
 
             <div class="question-card">
 
-                <div class="question-label">
-                    English Assessment
-                </div>
+                <h3 id="questionText">
+                    Carregando pergunta...
+                </h3>
 
+                <div id="answersContainer"></div>
 
-                <h2 id="questionText">
-                    What is your name?
-                </h2>
-
-
-                <p class="question-subtitle">
-
-                    Answer in English.
-                    Don't worry about mistakes.
-
-                </p>
-
-
-                <div class="answer-area">
-
-                    <input
-                        id="answerInput"
-                        type="text"
-                        placeholder="Write your answer..."
-                        autocomplete="off"
-                    >
-
-
-                    <button
-                        id="submitAnswer"
-                    >
-                        Next →
-                    </button>
-
-                </div>
+                <button
+                    type="button"
+                    id="nextQuestion"
+                    class="primary-button full-button"
+                >
+                    Próxima
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
 
             </div>
 
         </div>
 
-    </section>
+        <div id="levelResult" class="result-card hidden">
 
-</div>
+            <div class="result-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span class="result-label">
+                O teu nível
+            </span>
+
+            <div id="resultLevel" class="result-level">
+                B1
+            </div>
+
+            <h3 id="resultTitle">
+                Bom trabalho!
+            </h3>
+
+            <p id="resultDescription">
+                Resultado do teu teste.
+            </p>
+
+            <button
+                type="button"
+                id="startPracticeAfterTest"
+                class="primary-button"
+            >
+                INICIAR A PRATICAR
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMO FUNCIONA
+===================================================== -->
+
+<section id="como-funciona" class="section how-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                <i class="fa-solid fa-route"></i>
+            </div>
+
+            <h2>Como Funciona?</h2>
+
+            <p>
+                É simples. Segue estes passos e começa a aprender
+                hoje mesmo.
+            </p>
+
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <h3>Cadastro</h3>
+
+                <p>
+                    Cria o teu perfil e acede à plataforma.
+                </p>
+
+            </div>
+
+
+            <div class="step-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+
+                <h3>Teste de Nível</h3>
+
+                <p>
+                    Descobre o teu nível de inglês.
+                </p>
+
+            </div>
+
+
+            <div class="step-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+
+                <h3>Orientação</h3>
+
+                <p>
+                    Recebe dicas para aprender melhor.
+                </p>
+
+            </div>
+
+
+            <div class="step-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+
+                <h3>Prática</h3>
+
+                <p>
+                    Pratica com o Hassan Tutor.
+                </p>
+
+            </div>
+
+
+            <div class="step-arrow">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">5</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+
+                <h3>Evolução</h3>
+
+                <p>
+                    Continua a praticar e evoluir.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DICAS
+===================================================== -->
+
+<section id="dicas" class="section tips-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <h2>3 Principais Recomendações</h2>
+
+            <p>
+                Segue estas dicas para aproveitar melhor
+                o teu aprendizado e obter resultados mais rápidos.
+            </p>
+
+        </div>
+
+
+        <div class="recommendations">
+
+            <article class="recommendation-card">
+
+                <div class="recommendation-number">
+                    1
+                </div>
+
+                <div class="recommendation-icon">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+
+                <h3>
+                    Fale o máximo que puder
+                </h3>
+
+                <p>
+                    O objetivo é praticar. Não tenhas medo de errar.
+                    Fala em inglês mesmo que estejas inseguro.
+                    Quanto mais falas, mais aprendes.
+                </p>
+
+                <div class="tip-box">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                    <span>
+                        Usa o modo de voz e tenta responder
+                        em inglês primeiro.
+                    </span>
+                </div>
+
+            </article>
+
+
+            <article class="recommendation-card">
+
+                <div class="recommendation-number">
+                    2
+                </div>
+
+                <div class="recommendation-icon">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+
+                <h3>
+                    Anote todas as orientações
+                </h3>
+
+                <p>
+                    Durante as conversas, anota as correções,
+                    novas palavras, expressões e dicas de
+                    pronúncia do Hassan Tutor.
+                </p>
+
+                <div class="tip-box">
+                    <i class="fa-solid fa-pen"></i>
+                    <span>
+                        Escreve as correções e o novo vocabulário.
+                    </span>
+                </div>
+
+            </article>
+
+
+            <article class="recommendation-card">
+
+                <div class="recommendation-number">
+                    3
+                </div>
+
+                <div class="recommendation-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h3>
+                    Estude com regularidade
+                </h3>
+
+                <p>
+                    A consistência é o segredo do progresso.
+                    Tenta praticar todos os dias, mesmo que
+                    seja por pouco tempo.
+                </p>
+
+                <div class="tip-box">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>
+                        Define um horário fixo para estudar.
+                    </span>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="practice-cta">
+
+            <div class="practice-cta-content">
+
+                <span>
+                    Estás pronto?
+                </span>
+
+                <h2>
+                    Começa a praticar inglês.
+                </h2>
+
+                <p>
+                    Depois do teste, o Hassan Tutor adapta a
+                    prática ao teu nível.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="practiceButton"
+                class="practice-button"
+            >
+                INICIAR A PRATICAR
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+
+            <div class="footer-brand">
+                Hassan<span>.AI</span>
+            </div>
+
+            <p>
+                Aprenda Inglês de forma fácil, rápida e prática.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#inicio">Início</a>
+
+            <a href="#teste">Teste de Nível</a>
+
+            <a href="#como-funciona">Como Funciona</a>
+
+            <a href="#dicas">Dicas</a>
+
+        </div>
+
+        <div class="footer-right">
+
+            <span>
+                Hassan Tutor
+            </span>
+
+            <small>
+                Seu professor de inglês
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Hassan.AI — English Teacher
+    </div>
+
+</footer>
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
