@@ -1198,6 +1198,14 @@ select {
     font-size: 2rem;
 }
 
+#levelResult {
+    margin: 10px 0 14px;
+    color: var(--green);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+}
+
 .question-subtitle {
     color: rgba(255, 255, 255, 0.78);
 }
@@ -1219,6 +1227,46 @@ select {
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.75);
     font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.result-recommendation {
+    margin-top: 16px;
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba(0, 200, 83, 0.1);
+    border-left: 3px solid var(--green);
+    border-radius: 8px;
+}
+
+.result-recommendation strong {
+    display: block;
+    color: var(--white);
+    font-size: 0.9rem;
+}
+
+.result-recommendation p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.result-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.result-actions .primary-button {
+    margin-top: 0;
+}
+
+.copy-result-status {
+    min-height: 24px;
+    color: var(--green);
+    font-size: 0.86rem;
+    font-weight: 700;
 }
 
 .chat-app {

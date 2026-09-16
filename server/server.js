@@ -120,6 +120,8 @@ Evaluate:
 - English comprehension
 
 Return ONLY valid JSON.
+
+Return the strengths, weaknesses and recommendation in Portuguese.
 `
             },
             {
@@ -134,9 +136,9 @@ Return ONLY this JSON structure:
 {
     "level": "A1",
     "score": 50,
-    "strengths": ["strength"],
-    "weaknesses": ["weakness"],
-    "recommendation": "short recommendation"
+    "strengths": ["ponto forte em português"],
+    "weaknesses": ["ponto a melhorar em português"],
+    "recommendation": "recomendação curta em português"
 }
 
 Score must be between 0 and 100.

@@ -318,7 +318,43 @@ function showLevelResult(result) {
 
     const recommendation =
         result.recommendation ||
-        "Keep practicing and continue improving your English.";
+        "Continue praticando e melhorando o seu inglês.";
+
+    const levelMeanings = {
+        A1: "Consegue compreender e usar expressões simples em situações do dia a dia.",
+        A2: "Consegue comunicar-se em tarefas rotineiras e falar sobre temas familiares.",
+        B1: "Consegue lidar com situações comuns e expressar ideias sobre temas conhecidos.",
+        B2: "Consegue comunicar-se com mais fluência e compreender textos e conversas complexas."
+    };
+
+    const levelMeaning =
+        levelMeanings[level] ||
+        "O seu nível indica o ponto de partida para definir uma prática de inglês mais adequada.";
+
+    const strengthsText =
+        strengths.length
+            ? strengths.map(item => `- ${item}`).join("\n")
+            : "- Ainda não foram identificados pontos fortes específicos.";
+
+    const weaknessesText =
+        weaknesses.length
+            ? weaknesses.map(item => `- ${item}`).join("\n")
+            : "- Continue praticando para identificar novas áreas de melhoria.";
+
+    const resultText = [
+        "Resultado do teste de nível Hassan.AI",
+        `Nível identificado: ${level}`,
+        `Pontuação: ${score}%`,
+        `O que este nível significa: ${levelMeaning}`,
+        "",
+        "Pontos fortes:",
+        strengthsText,
+        "",
+        "Pontos a melhorar:",
+        weaknessesText,
+        "",
+        `Recomendação de estudo/prática: ${recommendation}`
+    ].join("\n");
 
     userLevel = level;
 
@@ -329,7 +365,7 @@ function showLevelResult(result) {
             <div class="result-icon">🎓</div>
 
             <div class="question-label">
-                YOUR LEVEL
+                O SEU NÍVEL
             </div>
 
             <h2>
@@ -341,13 +377,13 @@ function showLevelResult(result) {
             </div>
 
             <p class="question-subtitle">
-                ${escapeHTML(recommendation)}
+                ${escapeHTML(levelMeaning)}
             </p>
 
             <div class="result-details">
 
                 <div class="result-box">
-                    <strong>Strengths</strong>
+                    <strong>Pontos fortes</strong>
 
                     <div class="result-list">
                         ${
@@ -358,13 +394,13 @@ function showLevelResult(result) {
                                             `• ${escapeHTML(item)}`
                                     )
                                     .join("<br>")
-                                : "Good effort!"
+                                : "Ainda não foram identificados pontos fortes específicos."
                         }
                     </div>
                 </div>
 
                 <div class="result-box">
-                    <strong>Keep improving</strong>
+                    <strong>Pontos a melhorar</strong>
 
                     <div class="result-list">
                         ${
@@ -375,11 +411,33 @@ function showLevelResult(result) {
                                             `• ${escapeHTML(item)}`
                                     )
                                     .join("<br>")
-                                : "Keep practicing!"
+                                : "Continue praticando para identificar novas áreas de melhoria."
                         }
                     </div>
                 </div>
 
+            </div>
+
+            <div class="result-recommendation">
+                <strong>Recomendação de estudo/prática</strong>
+                <p>${escapeHTML(recommendation)}</p>
+            </div>
+
+            <div class="result-actions">
+                <button
+                    id="copyResult"
+                    class="primary-button"
+                    type="button"
+                >
+                    Copiar resultado
+                </button>
+
+                <span
+                    id="copyResultStatus"
+                    class="copy-result-status"
+                    role="status"
+                    aria-live="polite"
+                ></span>
             </div>
 
             <button
@@ -401,6 +459,76 @@ function showLevelResult(result) {
             "click",
             startLearning
         );
+    }
+
+    const copyResultButton =
+        document.getElementById("copyResult");
+
+    const copyResultStatus =
+        document.getElementById("copyResultStatus");
+
+    if (copyResultButton) {
+        copyResultButton.addEventListener(
+            "click",
+            () => copyResultToClipboard(
+                resultText,
+                copyResultButton,
+                copyResultStatus
+            )
+        );
+    }
+}
+
+
+async function copyResultToClipboard(text, button, status) {
+
+    let copied = false;
+
+    try {
+        if (
+            navigator.clipboard &&
+            typeof navigator.clipboard.writeText === "function"
+        ) {
+            await navigator.clipboard.writeText(text);
+            copied = true;
+        }
+    } catch (error) {
+        console.warn("Clipboard API unavailable:", error);
+    }
+
+    if (!copied) {
+        const textArea = document.createElement("textarea");
+
+        textArea.value = text;
+        textArea.setAttribute("readonly", "");
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        try {
+            copied = document.execCommand("copy");
+        } catch (error) {
+            console.warn("Clipboard fallback unavailable:", error);
+        }
+
+        textArea.remove();
+    }
+
+    if (status) {
+        status.textContent = copied
+            ? "Resultado copiado!"
+            : "Não foi possível copiar o resultado.";
+    }
+
+    if (button) {
+        button.disabled = copied;
+
+        if (copied) {
+            window.setTimeout(() => {
+                button.disabled = false;
+            }, 1800);
+        }
     }
 }
 
