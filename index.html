@@ -686,14 +686,15 @@
         <div class="container footer-content">
             <p>© 2026 Hassan.AI English Learning. Todos os direitos reservados.</p>
             <p>
-                <a
+                <button
+                    id="whatsappContactButton"
                     class="whatsapp-link"
-                    href="https://www.whatsapp.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    type="button"
+                    aria-describedby="whatsappContactStatus"
                 >
                     Falar connosco
-                </a>
+                </button>
+                <span id="whatsappContactStatus" class="whatsapp-status" role="status" aria-live="polite"></span>
             </p>
             <p>Created by Hassan</p>
         </div>

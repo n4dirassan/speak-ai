@@ -16,6 +16,11 @@ const answerInput = document.getElementById("answerInput");
 const submitAnswer = document.getElementById("submitAnswer");
 const menuToggle = document.getElementById("menuToggle");
 const primaryNavigation = document.getElementById("primaryNavigation");
+const whatsappContactButton = document.getElementById("whatsappContactButton");
+const whatsappContactStatus = document.getElementById("whatsappContactStatus");
+
+/* Add the configured WhatsApp number here in international format, without + or spaces. */
+const WHATSAPP_NUMBER = "";
 
 
 /* =========================================================
@@ -106,12 +111,34 @@ if (startTestButton) {
 
         if (testQuestions) {
             testQuestions.classList.remove("hidden");
+            testQuestions.classList.remove("has-result");
         }
 
         currentQuestion = 0;
         answers = [];
 
         showQuestion();
+    });
+}
+
+if (whatsappContactButton) {
+    whatsappContactButton.addEventListener("click", () => {
+        const number = WHATSAPP_NUMBER.replace(/\D/g, "");
+
+        if (!number) {
+            if (whatsappContactStatus) {
+                whatsappContactStatus.textContent =
+                    "Contacto WhatsApp ainda não configurado.";
+            }
+
+            return;
+        }
+
+        window.open(
+            `https://wa.me/${number}`,
+            "_blank",
+            "noopener,noreferrer"
+        );
     });
 }
 
@@ -369,6 +396,7 @@ function showLevelResult(result) {
     ].join("\n");
 
     userLevel = level;
+    testQuestions.classList.add("has-result");
 
     testQuestions.innerHTML = `
 
