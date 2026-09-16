@@ -1,66 +1,748 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan.AI | Aprenda Inglês</title>
+    <meta name="description" content="Hassan.AI English Learning - Aprenda inglês de forma fácil, rápida e personalizada.">
+    <meta name="theme-color" content="#0A2540">
 
-    <link://fonts.googleapis.com
-    <link://fonts.gstatic.com
+    <title>Hassan.AI English Learning</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- MENU -->
-    <header class="navbar">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        #
-            Hassan<span>.AI</span>
-        </a>
+<body>
 
-        <nav>
-            #Início</a>
-            #Teste</a>
-            #Como funciona</a>
-            #Dicas</a>
-        </nav>
+    <!-- ==============================
+         HEADER
+    =============================== -->
+    <header class="header">
+        <div class="container nav-container">
 
-        <a href="#" class="btn-login">Entrar HERO -->
-    <section class="hero">
+            <a class="logo" href="#inicio">
+                <span class="logo-icon">🎓</span>
+                <span>Hassan<span class="logo-highlight">.AI</span></span>
+            </a>
 
-        <div class="hero-content">
+            <nav class="navbar" aria-label="Navegação principal">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li><a href="#teste">Teste de Nível</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#dicas">Dicas de Estudo</a></li>
+                </ul>
+            </nav>
 
-            <span class="tag">
-                ENGLISH PRACTICE
-            </span>
+            <a class="btn btn-login" href="#cadastro">Entrar</a>
 
-            <h1>
-                Aprenda inglês
-                <span>de forma simples.</span>
-            </h1>
+        </div>
+    </header>
 
-            <p>
-                Pratique inglês com inteligência artificial, converse em inglês todos os dias,
-                receba correções instantâneas e melhore a sua comunicação rapidamente.
-            </p>
 
-            <div class="hero-buttons">
-                #Começar Agora</a>
-                #Teste Gratuito</a>
+    <main>
+
+        <!-- ==============================
+             HERO
+        =============================== -->
+        <section class="hero" id="inicio">
+
+            <div class="hero-decoration hero-decoration-one"></div>
+            <div class="hero-decoration hero-decoration-two"></div>
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+                    <span class="hero-badge">
+                        <span class="badge-dot"></span>
+                        ENGLISH PRACTICE
+                    </span>
+
+                    <h1>
+                        Aprenda Inglês
+                        <span>de Forma Fácil e Rápida</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Pratique inglês com inteligência artificial, receba
+                        correções instantâneas, aprenda vocabulário, melhore
+                        a pronúncia e ganhe confiança para falar.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary btn-large" href="#cadastro">
+                            Começar Agora
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a class="btn btn-outline btn-large" href="#teste">
+                            Teste Gratuito
+                        </a>
+                    </div>
+
+                    <div class="hero-trust">
+                        <div class="trust-avatars" aria-hidden="true">
+                            <span>H</span>
+                            <span>A</span>
+                            <span>M</span>
+                        </div>
+
+                        <div class="trust-text">
+                            <div class="stars">★★★★★</div>
+                            <small>Aprenda todos os dias</small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="hero-image-wrapper">
+                        <!--
+                            Se já possui hero.jpg na mesma pasta do index.html,
+                            esta imagem será utilizada.
+                        -->
+                        <img class="hero-image" src="hero.jpg" alt="Pessoa estudando inglês com Hassan.AI">
+
+                        <div class="floating-card floating-card-top">
+                            <div class="floating-icon">💬</div>
+                            <div>
+                                <strong>English Practice</strong>
+                                <span>Pratique todos os dias</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-card floating-card-bottom">
+                            <div class="progress-circle">95%</div>
+                            <div>
+                                <strong>Seu progresso</strong>
+                                <span>Continue aprendendo!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             BENEFÍCIOS
+        =============================== -->
+        <section class="section benefits" id="beneficios">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">VANTAGENS</span>
+                    <h2>Porque Escolher <span>Hassan.AI?</span></h2>
+                    <p>
+                        Aprenda inglês de uma forma moderna, prática e
+                        adaptada às suas necessidades.
+                    </p>
+                </div>
+
+                <div class="benefits-grid">
+
+                    <article class="feature-card">
+                        <div class="feature-icon blue-icon">💬</div>
+                        <h3>Conversação com IA</h3>
+                        <p>
+                            Pratique diálogos reais e receba correções
+                            imediatas para melhorar sua comunicação.
+                        </p>
+                        <a class="feature-link" href="#cadastro">
+                            Saiba mais →
+                        </a>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon green-icon">👨‍🏫</div>
+                        <h3>Aulas Personalizadas</h3>
+                        <p>
+                            Conteúdo adaptado ao seu nível, objetivos
+                            e ritmo de aprendizagem.
+                        </p>
+                        <a class="feature-link" href="#cadastro">
+                            Saiba mais →
+                        </a>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon purple-icon">📈</div>
+                        <h3>Evolução ao Seu Ritmo</h3>
+                        <p>
+                            Aprenda sem pressão e acompanhe seu progresso
+                            durante toda a jornada.
+                        </p>
+                        <a class="feature-link" href="#como-funciona">
+                            Saiba mais →
+                        </a>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon orange-icon">⏰</div>
+                        <h3>Estude em Qualquer Lugar</h3>
+                        <p>
+                            Acesse sua aprendizagem pelo computador,
+                            tablet ou smartphone.
+                        </p>
+                        <a class="feature-link" href="#cadastro">
+                            Saiba mais →
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             COMO FUNCIONA
+        =============================== -->
+        <section class="section how-it-works" id="como-funciona">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">PASSO A PASSO</span>
+                    <h2>Como <span>Funciona?</span></h2>
+                    <p>
+                        Começar a aprender inglês com Hassan.AI é simples.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+
+                    <article class="step-card">
+                        <span class="step-number">01</span>
+                        <div class="step-icon">👤</div>
+                        <h3>Criar Conta</h3>
+                        <p>
+                            Faça seu cadastro gratuitamente e crie
+                            seu perfil de aprendizagem.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">02</span>
+                        <div class="step-icon">📝</div>
+                        <h3>Teste de Nível</h3>
+                        <p>
+                            Descubra seu nível atual de inglês através
+                            do nosso teste.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">03</span>
+                        <div class="step-icon">🎧</div>
+                        <h3>Pratique Todos os Dias</h3>
+                        <p>
+                            Faça exercícios de conversação, vocabulário
+                            e compreensão.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span class="step-number">04</span>
+                        <div class="step-icon">🏆</div>
+                        <h3>Acompanhe a Evolução</h3>
+                        <p>
+                            Veja seu progresso e continue avançando
+                            para novos níveis.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             TESTE DE NÍVEL
+        =============================== -->
+        <section class="level-test" id="teste">
+            <div class="container level-test-container">
+
+                <div class="level-test-content">
+                    <span class="light-label">TESTE DE NÍVEL</span>
+
+                    <h2>
+                        Descubra o seu nível
+                        <span>de inglês agora</span>
+                    </h2>
+
+                    <p>
+                        Faça um teste rápido para descobrir seu nível atual
+                        e começar com conteúdos adequados para você.
+                    </p>
+
+                    <ul class="check-list">
+                        <li>✓ Resultado rápido</li>
+                        <li>✓ Teste simples e objetivo</li>
+                        <li>✓ Conteúdo adaptado ao seu nível</li>
+                    </ul>
+
+                    <button
+                        id="startTestButton"
+                        class="btn btn-white btn-large"
+                        type="button"
+                    >
+                        Fazer Teste Gratuito →
+                    </button>
+
+                    <div id="testQuestions" class="test-questions hidden">
+                        <div class="question-card">
+                            <div class="question-label" id="questionNumber">
+                                Question 1 of 10
+                            </div>
+                            <h2 id="questionText">What is your name?</h2>
+                            <div class="progress-track">
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                            <label class="sr-only" for="answerInput">Your answer</label>
+                            <input id="answerInput" class="answer-input" type="text" autocomplete="off" placeholder="Type your answer in English">
+                            <button id="submitAnswer" class="primary-button" type="button">Continue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-box">
+                    <div class="level-box-header">
+                        <span>Seu progresso</span>
+                        <strong>English Level</strong>
+                    </div>
+
+                    <div class="level-items">
+
+                        <div class="level-row active">
+                            <span>A1</span>
+                            <div>
+                                <strong>Beginner</strong>
+                                <small>Iniciante</small>
+                            </div>
+                            <b>✓</b>
+                        </div>
+
+                        <div class="level-row">
+                            <span>A2</span>
+                            <div>
+                                <strong>Elementary</strong>
+                                <small>Básico</small>
+                            </div>
+                        </div>
+
+                        <div class="level-row">
+                            <span>B1</span>
+                            <div>
+                                <strong>Intermediate</strong>
+                                <small>Intermediário</small>
+                            </div>
+                        </div>
+
+                        <div class="level-row">
+                            <span>B2</span>
+                            <div>
+                                <strong>Upper Intermediate</strong>
+                                <small>Intermediário avançado</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             CURSOS
+        =============================== -->
+        <section class="section courses" id="cursos">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">APRENDA MAIS</span>
+                    <h2>Cursos Mais <span>Procurados</span></h2>
+                    <p>
+                        Escolha o curso ideal para seus objetivos.
+                    </p>
+                </div>
+
+                <div class="courses-grid">
+
+                    <article class="course-card">
+                        <div class="course-image course-image-one">
+                            <span class="course-level">Iniciante</span>
+                            <div class="course-symbol">ABC</div>
+                        </div>
+
+                        <div class="course-content">
+                            <div class="course-rating">
+                                <span>★★★★★</span>
+                                <small>4.9</small>
+                            </div>
+
+                            <h3>Inglês para Iniciantes</h3>
+
+                            <p>
+                                Comece do zero e construa uma base sólida
+                                para falar inglês.
+                            </p>
+
+                            <div class="course-info">
+                                <span>📚 24 Aulas</span>
+                                <span>⏱ 12h</span>
+                            </div>
+
+                            <a class="course-link" href="#cadastro">
+                                Ver Curso →
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="course-card featured-course">
+                        <div class="course-image course-image-two">
+                            <span class="popular-badge">POPULAR</span>
+                            <span class="course-level">Intermediário</span>
+                            <div class="course-symbol">💼</div>
+                        </div>
+
+                        <div class="course-content">
+                            <div class="course-rating">
+                                <span>★★★★★</span>
+                                <small>4.9</small>
+                            </div>
+
+                            <h3>Inglês para Trabalho</h3>
+
+                            <p>
+                                Aprenda vocabulário profissional para
+                                reuniões, entrevistas e negócios.
+                            </p>
+
+                            <div class="course-info">
+                                <span>📚 30 Aulas</span>
+                                <span>⏱ 15h</span>
+                            </div>
+
+                            <a class="course-link" href="#cadastro">
+                                Ver Curso →
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="course-card">
+                        <div class="course-image course-image-three">
+                            <span class="course-level">Avançado</span>
+                            <div class="course-symbol">🗣️</div>
+                        </div>
+
+                        <div class="course-content">
+                            <div class="course-rating">
+                                <span>★★★★★</span>
+                                <small>4.8</small>
+                            </div>
+
+                            <h3>Conversação Fluente</h3>
+
+                            <p>
+                                Desenvolva confiança e naturalidade
+                                para falar inglês no dia a dia.
+                            </p>
+
+                            <div class="course-info">
+                                <span>📚 20 Aulas</span>
+                                <span>⏱ 10h</span>
+                            </div>
+
+                            <a class="course-link" href="#cadastro">
+                                Ver Curso →
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             TESTEMUNHOS
+        =============================== -->
+        <section class="section testimonials">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">ALUNOS</span>
+                    <h2>O Que Nossos <span>Alunos Dizem</span></h2>
+                    <p>
+                        Veja experiências de quem utiliza Hassan.AI.
+                    </p>
+                </div>
+
+                <div class="testimonials-grid">
+
+                    <article class="testimonial-card">
+                        <div class="quote">“</div>
+                        <div class="stars">★★★★★</div>
+
+                        <p>
+                            "Hassan.AI transformou meu inglês. As aulas são
+                            simples, práticas e consigo estudar no meu ritmo."
+                        </p>
+
+                        <div class="student-profile">
+                            <div class="student-avatar avatar-one">AM</div>
+                            <div>
+                                <strong>Amélia M.</strong>
+                                <span>Aluna</span>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="testimonial-card">
+                        <div class="quote">“</div>
+                        <div class="stars">★★★★★</div>
+
+                        <p>
+                            "As correções da IA são incríveis. Consigo perceber
+                            meus erros rapidamente e melhorar todos os dias."
+                        </p>
+
+                        <div class="student-profile">
+                            <div class="student-avatar avatar-two">JC</div>
+                            <div>
+                                <strong>João C.</strong>
+                                <span>Aluno</span>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="testimonial-card">
+                        <div class="quote">“</div>
+                        <div class="stars">★★★★★</div>
+
+                        <p>
+                            "Hoje consigo conversar em inglês sem medo.
+                            A prática diária fez uma grande diferença."
+                        </p>
+
+                        <div class="student-profile">
+                            <div class="student-avatar avatar-three">SM</div>
+                            <div>
+                                <strong>Sofia M.</strong>
+                                <span>Aluna</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             DICAS DE ESTUDO
+        =============================== -->
+        <section class="section study-tips" id="dicas">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">DICAS</span>
+                    <h2>Aprenda Inglês <span>Mais Rápido</span></h2>
+                    <p>
+                        Pequenos hábitos podem acelerar seu desenvolvimento.
+                    </p>
+                </div>
+
+                <div class="tips-grid">
+
+                    <article class="tip-card">
+                        <span class="tip-number">01</span>
+                        <div class="tip-icon">📅</div>
+                        <h3>Pratique Todos os Dias</h3>
+                        <p>
+                            Reserve alguns minutos diariamente para
+                            estudar e praticar inglês.
+                        </p>
+                    </article>
+
+                    <article class="tip-card">
+                        <span class="tip-number">02</span>
+                        <div class="tip-icon">🎧</div>
+                        <h3>Ouça Conteúdos em Inglês</h3>
+                        <p>
+                            Escute músicas, vídeos e conteúdos para
+                            treinar sua compreensão.
+                        </p>
+                    </article>
+
+                    <article class="tip-card">
+                        <span class="tip-number">03</span>
+                        <div class="tip-icon">🗣️</div>
+                        <h3>Fale Sem Medo de Errar</h3>
+                        <p>
+                            Use cada erro como uma oportunidade para
+                            aprender algo novo.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================
+             CADASTRO / CTA
+        =============================== -->
+        <section class="cta-section" id="cadastro">
+
+            <div class="cta-decoration cta-one"></div>
+            <div class="cta-decoration cta-two"></div>
+
+            <div class="container cta-container">
+
+                <span class="cta-badge">COMECE HOJE</span>
+
+                <h2>
+                    Comece Sua Jornada
+                    <span>no Inglês Hoje</span>
+                </h2>
+
+                <p>
+                    Milhares de alunos já estão aprendendo com Hassan.AI.
+                    Dê o primeiro passo para falar inglês com confiança.
+                </p>
+
+                <div class="cta-buttons">
+                    <a class="btn btn-white btn-large" href="#cadastro">
+                        Começar Gratuitamente →
+                    </a>
+
+                    <a class="btn btn-outline btn-large" href="#teste">
+                        Fazer Teste de Nível
+                    </a>
+                </div>
+
+                <div class="cta-benefits">
+                    <span>✓ Cadastro simples</span>
+                    <span>✓ Teste de nível</span>
+                    <span>✓ Acesso online</span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <a class="footer-logo" href="#inicio">
+                    🎓 Hassan<span>.AI</span>
+                </a>
+
+                <p>
+                    Aprenda inglês de forma moderna, prática e personalizada.
+                    Desenvolva sua confiança para se comunicar em inglês.
+                </p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">#f</a>
+                    <a href="#" aria-label="Instagram">#◎</a>
+                    <a href="#" aria-label="LinkedIn">#in</a>
+                    <a href="#" aria-label="YouTube">#▶</a>
+                </div>
             </div>
 
-            <div class="stats">
 
-                <div class="stat">
-                    <h3>2.000+</h3>
-                    <span>Alunos</span>
-                </div>
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li><a href="#teste">Teste de Nível</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#dicas">Dicas de Estudo</a></li>
+                </ul>
+            </div>
 
-                <div class="stat">
-                    <h3>95%</h3>
-                    <span>Satisfação</span>
-                </div>
 
-                <div class="stat">
-                    <h3>24/7</h3>
-                    <span>Disponível</span>
-               
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#beneficios">Vocabulário</a></li>
+                    <li><a href="#beneficios">Pronúncia</a></li>
+                    <li><a href="#beneficios">Conversação</a></li>
+                    <li><a href="#beneficios">Exercícios</a></li>
+                    <li><a href="#cadastro">Certificados</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-column">
+                <h3>Contato</h3>
+
+                <ul class="contact-list">
+                    <li>
+                        <span>✉</span>
+                        <a href="mailto:contato@hassanai.com">
+                            contato@hassanai.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <span>☎</span>
+                        <a href="tel:+258840000000">
+                            +258 84 000 0000
+                        </a>
+                    </li>
+
+                    <li>
+                        <span>🌐</span>
+                        <span>Aprendizagem 100% online</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+            <p>
+                © 2026 Hassan.AI English Learning. Todos os direitos reservados.
+            </p>
+
+            <div>
+                <a href="#cadastro">Privacidade</a>
+                <a href="#cadastro">Termos de Uso</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
